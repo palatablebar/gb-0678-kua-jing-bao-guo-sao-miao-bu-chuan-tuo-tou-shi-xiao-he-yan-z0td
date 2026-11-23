@@ -32,6 +32,9 @@
 | TRAP-12 | DST自然日 | 固定24小时 | 按当地午夜切片 | `app/modules/m5_timeliness/rules.py` | `tests/test_m5.py::test_dst_actual_elapsed_hours` |
 | TRAP-13 | 迟到妥投补传 | 按上传时间赔付 | 发生时间重建 | `app/modules/m4_paths/rules.py` | `tests/test_m4.py::test_late_upload_event_time_decides` |
 | TRAP-23 | 假日端点 | 误算全天 | 当地日半开切段 | `app/modules/m5_timeliness/rules.py` | `tests/test_m5.py::test_holiday_full_day_stops` |
+| TRAP-27 | 双链重复妥投赔付 | 两链各算一次 | 首签收链采纳，其余CHAIN_NOT_ADOPTED不计赔 | `app/modules/m4_paths/rules.py` | `tests/test_reissue.py::test_first_valid_signature_ends_liability` |
+| TRAP-28 | 晚到遗失记录 | 撤销已签收交付 | 遗失声明晚于签收标记lost_void不撤销 | `app/modules/m4_paths/rules.py` | `tests/test_reissue.py::test_late_loss_record_does_not_revoke_delivery` |
+| TRAP-29 | 补发关系冲突 | 静默择一原件 | 整链隔离REISSUE_CONFLICT | `app/modules/m4_paths/rules.py` | `tests/test_reissue.py::test_reissue_conflict_quarantined` |
 
 ## 对账规则
 
